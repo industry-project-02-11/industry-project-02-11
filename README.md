@@ -43,6 +43,6 @@
 
 ## 🔁 시스템 아키텍처
 
-![아키텍처 이미지](./5최종발표자료/Archi.png)
+![아키텍처 이미지](./11조/5최종발표자료/Archi.png)
 
 > AWS 비용 수집 → Spring Boot 서버 → FastAPI 분석 → PostgreSQL 저장 → React 대시보드 → Slack/Email 알림
