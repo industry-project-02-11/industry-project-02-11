@@ -36,14 +36,14 @@
 ## 🔧 Git 사용 규칙
 
 - **커밋 메시지 템플릿** (한글 or 영어 둘 다 OK)
-feat: 비용 분석 기능 구현
-fix: 리소스 탐지 버그 수정
-docs: 3주차 회의록 추가
-refactor: FastAPI 모듈 구조 정리
+- feat: 비용 분석 기능 구현
+- fix: 리소스 탐지 버그 수정
+- docs: 3주차 회의록 추가 
+- refactor: FastAPI 모듈 구조 정리
 
 
 - **PR 제목 예시**
-[feature/cost-fetch] 비용 수집 모듈 초기 구현
+- [feature/cost-fetch] 비용 수집 모듈 초기 구현
 
 ---
 
