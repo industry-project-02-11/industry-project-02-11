@@ -15,7 +15,11 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:5173"
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "https://costwise.site"
+              - "https://www.costwise.site"
+              - "https://industry-02-11.vercel.app"
             allowedMethods:
               - GET
               - POST
