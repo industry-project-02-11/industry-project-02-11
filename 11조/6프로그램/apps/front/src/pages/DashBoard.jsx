@@ -984,7 +984,7 @@ const Dashboard = () => {
                       >
                         <div style={styles.itemHeader}>
                           <span style={styles.itemTitle}>
-                            {resource.resourceType || "리소스"} #{resource.id}
+                            {resource.serviceType || "리소스"} #{resource.id}
                           </span>
                           <div style={styles.statusBadge}>
                             <CheckCircle size={14} color="#059669" />
@@ -995,9 +995,7 @@ const Dashboard = () => {
                         <div style={styles.detailItem}>
                           <Server size={14} color="#6b7280" />
                           <span style={styles.detailText}>
-                            {resource.instanceType ||
-                              resource.resourceName ||
-                              "정보 없음"}
+                            {resource.awsResourceId || "정보 없음"}
                           </span>
                         </div>
 
@@ -1010,11 +1008,11 @@ const Dashboard = () => {
                           </div>
                         )}
 
-                        {resource.cost && (
+                        {resource.costUsd && (
                           <div style={styles.detailItem}>
                             <DollarSign size={14} color="#f59e0b" />
                             <span style={styles.detailText}>
-                              비용: ${resource.cost}/월
+                              비용: ${resource.costUsd.toFixed(2)}/월
                             </span>
                           </div>
                         )}
@@ -1022,9 +1020,7 @@ const Dashboard = () => {
                         <div style={styles.detailItem}>
                           <Clock size={14} color="#9ca3af" />
                           <span style={styles.dateText}>
-                            {formatDate(
-                              resource.createdAt || resource.launchTime
-                            )}
+                            {formatDate(resource.createdAt)}
                           </span>
                         </div>
                       </div>
@@ -1074,7 +1070,7 @@ const Dashboard = () => {
                       >
                         <div style={styles.itemHeader}>
                           <span style={styles.itemTitle}>
-                            {resource.resourceType || "리소스"} #{resource.id}
+                            {resource.serviceType || "리소스"} #{resource.id}
                           </span>
                           <div style={styles.statusBadge}>
                             <AlertCircle size={14} color="#f59e0b" />
@@ -1085,28 +1081,26 @@ const Dashboard = () => {
                         <div style={styles.detailItem}>
                           <Server size={14} color="#6b7280" />
                           <span style={styles.detailText}>
-                            {resource.instanceType ||
-                              resource.resourceName ||
-                              "정보 없음"}
+                            {resource.awsResourceId || "정보 없음"}
                           </span>
                         </div>
 
-                        {resource.idleDuration && (
+                        {resource.usageRate !== undefined && (
                           <div style={styles.detailItem}>
                             <Clock size={14} color="#f59e0b" />
                             <span style={styles.detailText}>
-                              유휴 기간: {resource.idleDuration}
+                              사용률: {resource.usageRate.toFixed(1)}%
                             </span>
                           </div>
                         )}
 
-                        {resource.wasteCost && (
+                        {resource.costUsd && (
                           <div style={styles.detailItem}>
                             <DollarSign size={14} color="#dc2626" />
                             <span
                               style={{ ...styles.detailText, color: "#dc2626" }}
                             >
-                              낭비 비용: ${resource.wasteCost}/월
+                              낭비 비용: ${resource.costUsd.toFixed(2)}/월
                             </span>
                           </div>
                         )}
@@ -1114,9 +1108,7 @@ const Dashboard = () => {
                         <div style={styles.detailItem}>
                           <Clock size={14} color="#9ca3af" />
                           <span style={styles.dateText}>
-                            {formatDate(
-                              resource.lastUsed || resource.createdAt
-                            )}
+                            {formatDate(resource.lastCheckedAt || resource.createdAt)}
                           </span>
                         </div>
                       </div>

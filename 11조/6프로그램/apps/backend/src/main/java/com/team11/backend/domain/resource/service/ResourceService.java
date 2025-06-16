@@ -76,6 +76,13 @@ public class ResourceService {
                 .collect(Collectors.toList());
     }
 
+    // 사용자의 사용중인 리소스만 조회
+    public List<ResourceDto.Response> getActiveResourcesByUserUid(String userUid) {
+        return resourceRepository.findByUserUidAndIsIdleFalse(userUid).stream()
+                .map(ResourceDto.Response::from)
+                .collect(Collectors.toList());
+    }
+
     // AWS 리소스 ID로 리소스 조회
     public ResourceDto.Response getResourceByAwsResourceId(String awsResourceId) {
         Resource resource = resourceRepository.findByAwsResourceId(awsResourceId)

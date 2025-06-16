@@ -19,6 +19,9 @@ public interface ResourceRepository extends JpaRepository<Resource, Long> {
     // 특정 사용자의 유휴 리소스만 조회
     List<Resource> findByUserUidAndIsIdleTrue(String userUid);
 
+    // 특정 사용자의 사용중인 리소스만 조회
+    List<Resource> findByUserUidAndIsIdleFalse(String userUid);
+
     // 특정 AWS 리소스 ID로 Resource 조회
     Optional<Resource> findByAwsResourceId(String awsResourceId);
 

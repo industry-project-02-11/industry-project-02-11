@@ -47,6 +47,15 @@ public class ResourceController {
         return ResponseEntity.ok(responses);
     }
 
+    // 사용중인 리소스만 조회
+    @GetMapping("/active")
+    public ResponseEntity<List<ResourceDto.Response>> getActiveResources(
+            @AuthenticationPrincipal UserDetails userDetails) {
+        String userUid = userDetails.getUsername();
+        List<ResourceDto.Response> responses = resourceService.getActiveResourcesByUserUid(userUid);
+        return ResponseEntity.ok(responses);
+    }
+
     // 특정 리소스 상세 조회
     @GetMapping("/{id}")
     public ResponseEntity<ResourceDto.Response> getResourceById(
